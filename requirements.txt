@@ -1,0 +1,13 @@
+anyio==3.3.4
+fastapi==0.70.0
+idna==3.3
+pkg_resources==0.0.0
+pyaes==1.6.1
+pyasn1==0.4.8
+pydantic==1.8.2
+rsa==4.7.2
+sniffio==1.2.0
+starlette==0.16.0
+Telethon==1.23.0
+typing_extensions==4.0.0
+python-dotenv==0.19.2
