@@ -9,26 +9,31 @@ load_dotenv()
 api_id = os.getenv("API_ID")
 api_hash = os.getenv("API_HASH")
 
-client = TelegramClient('session_name', api_id, api_hash)
+client = TelegramClient('session_name1', api_id, api_hash)
+
+# @client.on(events.NewMessage(chats='test_global_avatar'))
+# async def my_event_handler(event):
+#     print(event.raw_text)
+#     file_name = str(str(time.monotonic()))
+#     # await client.send_message("test_global_chat", event.raw_text)
+#     await client.send_message("Avatar.NewsMod", 'Welcome', buttons=[
+#         Button.text('Thanks!', resize=True, single_use=True),
+#         Button.request_phone('Send phone'),
+#         Button.request_location('Send location')
+#     ])
+
+#     with open("test_global_avatar/test_global_avatar{}.txt".format(file_name), "w") as file:
+#         file.write(event.raw_text)
+    
+#     # events.NewMessage()
 
 
-
-@client.on(events.NewMessage(chats='test_global_spb_chat'))
+@client.on(events.NewMessage(chats='https://t.me/testglobalavatar'))
 async def my_event_handler(event):
     print(event.raw_text)
     file_name = str(str(time.monotonic()))
-    # await client.send_message("test_global_chat", event.raw_text)
-    await client.send_message("theMarketplase_test", 'Welcome', buttons=[
-        Button.text('Thanks!', resize=True, single_use=True),
-        Button.request_phone('Send phone'),
-        Button.request_location('Send location')
-    ])
-
-    with open("test_global_spb_chat/test_global_spb_chat_{}.txt".format(file_name), "w") as file:
+    with open("testglobalavatar/testglobalavatar_{}.txt".format(file_name), "w") as file:
         file.write(event.raw_text)
-    
-    # events.NewMessage()
-
 
 @client.on(events.NewMessage(chats='https://t.me/lastcallhack'))
 async def my_event_handler(event):
