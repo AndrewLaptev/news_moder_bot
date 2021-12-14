@@ -1,9 +1,13 @@
-from telethon import TelegramClient, events, sync
-import time
+from telethon import TelegramClient, events
 from dotenv import load_dotenv
 import os
 from telethon.events.common import EventCommon
 from telethon.tl.custom import Button
+import requests
+import json
+
+BOT_TOKEN = '5003522949:AAEkdzUD9RHnHOPKbTP_l_BhEvH0PlZ8dm0'
+BOT_CHAT_ID = '1034689842'
 
 load_dotenv()
 api_id = os.getenv("API_ID")
@@ -27,44 +31,30 @@ client = TelegramClient('session_name1', api_id, api_hash)
     
 #     # events.NewMessage()
 
+# def start_bot(token : str):
+#     updater = Updater(token, use_context=True)
+#     dp = updater.dispatcher
+
+#     # on different commands - answer in Telegram
+#     dp.add_handler(CommandHandler("start", start))
+#     dp.add_handler(CommandHandler("greet", greet_command))
+#     dp.add_handler(CommandHandler("news", send_news))
+
+#     # Start the Bot
+#     updater.start_polling()
+#     updater.idle()
+
+def telegram_bot_send_msg(bot_token: str, bot_chatID: str, bot_message: str):
+    send_text = 'https://api.telegram.org/bot' + bot_token + '/sendMessage?chat_id=' + bot_chatID + '&parse_mode=Markdown&text=' + bot_message.replace("**","***")
+    response = requests.get(send_text)
+    return json.dumps(response.json(), ensure_ascii=False)
+
 
 @client.on(events.NewMessage(chats='https://t.me/testglobalavatar'))
 async def my_event_handler(event):
-    print(event.raw_text)
-    file_name = str(str(time.monotonic()))
-    with open("testglobalavatar/testglobalavatar_{}.txt".format(file_name), "w") as file:
-        file.write(event.raw_text)
+    chan_name = '**' + str(event.chat.title).upper() + '**' + '\n\n'
+    print(telegram_bot_send_msg(BOT_TOKEN, BOT_CHAT_ID, chan_name + event.text))
 
-@client.on(events.NewMessage(chats='https://t.me/lastcallhack'))
-async def my_event_handler(event):
-    print(event.raw_text)
-    file_name = str(str(time.monotonic()))
-    with open("lastcallhack/lastcallhack_{}.txt".format(file_name), "w") as file:
-        file.write(event.raw_text)
-
-
-@client.on(events.NewMessage(chats="https://t.me/gamedevjob"))
-async def channel3(event):
-    print(event.raw_text)
-    file_name = str(str(time.monotonic()))
-    with open("gamedevjob/gamedevjob_{}.txt".format(file_name), "w") as file:
-        file.write(event.raw_text)
-
-
-@client.on(events.NewMessage(chats="https://t.me/fintech_vacancy"))
-async def channel4(event):
-    print(event.raw_text)
-    file_name = str(str(time.monotonic()))
-    with open("fintech_vacancy/fintech_vacancy_{}.txt".format(file_name), "w") as file:
-        file.write(event.raw_text)
-
-
-@client.on(events.NewMessage(chats="https://t.me/habr_com"))
-async def channel4(event):
-    print(event.raw_text)
-    file_name = str(str(time.monotonic()))
-    with open("habr_com/habr_com_{}.txt".format(file_name), "w") as file:
-        file.write(event.raw_text)
 
 
 
