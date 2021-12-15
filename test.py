@@ -14,14 +14,14 @@ def start(update: Update, context: CallbackContext) -> None:
     """Sends a message with three inline buttons attached."""
     keyboard = [
         [
-            InlineKeyboardButton("Add", callback_data='yes'),
-            InlineKeyboardButton("Delete", callback_data='no'),
+            InlineKeyboardButton("Add", callback_data='Add'),
+            InlineKeyboardButton("Delete", callback_data='Delete'),
         ],
     ]
 
     reply_markup = InlineKeyboardMarkup(keyboard)
 
-    update.message.reply_text(context.args[0], reply_markup=reply_markup)
+    update.message.reply_text(update.message.text, reply_markup=reply_markup)
 
 
 def button(update: Update, context: CallbackContext) -> None:
@@ -48,7 +48,7 @@ def main() -> None:
     updater.dispatcher.add_handler(CommandHandler('start', start))
     updater.dispatcher.add_handler(CallbackQueryHandler(button))
     updater.dispatcher.add_handler(CommandHandler('help', help_command))
-    updater.dispatcher.add_handler(MessageHandler(Filters.text, start))
+    updater.dispatcher.add_handler(MessageHandler(Filters.all, start))
 
     # Start the Bot
     updater.start_polling()
