@@ -1,6 +1,0 @@
-[​](https://telegra.ph/file/b6f4428a357e565264665.mp4)[Vsinder](https://github.com/benawad/vsinder) – **Приложение для знакомств для VSCode
-
-**Нет, серьезно, это приложение для знакомств между программистами, интегрированное в VSCode. 
-Вы можете просматривать примеры кода других людей, лайкать или «пролистывать» их анкеты прямо из редактора!
-
-[GitHub](https://t.me/github_community) | #TypeScript #Interesting
