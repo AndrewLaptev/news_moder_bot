@@ -1,0 +1,44 @@
+[
+  {
+    "asset_id": "c222f41e-d265-4475-b639-d5b3b8479b8d",
+    "proposed_to": [],
+    "created_by": null,
+    "payload": {
+      "title": "Adaptive load balancing of distributed multi-agent simulations on heterogeneous computational infrastructures | Semantic Scholar",
+      "authors": [
+        "Oksana Severiukhina",
+        "Pavel A. Smirnov",
+        "K. Bochenina",
+        "D. Nasonov",
+        "Nikolay Butakov"
+      ],
+      "date": "2017-10-06T00:00:00",
+      "pdf_url": "https://doi.org/10.1016/J.PROCS.2017.11.170",
+      "abstract": "The research on an algorithm based on a well-known genetic algorithm that performs optimization of matching between the model structure formed by multiple interconnected executable blocks of a distributed programming implementation of the model and network structure of the computational environment is presented. Abstract Simulation of the agent-based model has several problems related to scalability, the accuracy of reproduction of motion. The increase in the number of agents leads to additional computations and hence the program run time also increases. This problem can be solved using distributed simulation and distributed computational environments such as clusters and supercomputers. The model objects must be divided into different processes and calculations to be able to be executed in parallel. This paper presents the research on an algorithm to balancing of computational load. The algorithm is based on a well-known genetic algorithm and performs optimization of matching between the model structure formed by multiple interconnected executable blocks of a distributed programming implementation of the model and network structure of the computational environment. Efficient placement of the model graph’s nodes to heterogeneous computational ones leads to improvement in overall performance of the simulation and reducing of execution time.",
+      "arxiv_id": null,
+      "doi": "10.1016/j.procs.2017.11.170",
+      "journal_title": null
+    }
+  },
+  {
+    "asset_id": "51c86d2f-711d-4be4-809a-13c3ec4439a8",
+    "proposed_to": [],
+    "created_by": null,
+    "payload": {
+      "title": "[PDF] Evaluation of Finnish Diabetes Risk Score in Screening Undiagnosed Diabetes and Prediabetes among U.S. Adults by Gender and Race: NHANES 1999-2010 | Semantic Scholar",
+      "authors": [
+        "L. Zhang",
+        "Zhenzhen Zhang",
+        "Yurong Zhang",
+        "G. Hu",
+        "Liwei Chen"
+      ],
+      "date": "2014-10-06T00:00:00",
+      "pdf_url": "https://pdfs.semanticscholar.org/e315/c3c9c3fe77f5341a02b9c0a8c7fa306738c6.pdf",
+      "abstract": "Finnish Diabetes Risk Score is a simple and non-invasive screening tool to identify individuals at high risk for diabetes in the U.S. adults. Objective To evaluate the performance of Finnish Diabetes Risk Score (FINDRISC) in detecting undiagnosed diabetes and prediabetes among U.S. adults by gender and race. Methods This cross-sectional analysis included participants (aged ≥20 years) from the National Health and Nutrition Examination Survey (NHANES) 1999–2010. Sensitivity, specificity, area under the receiver operating characteristic (ROC) curve and the optimal cutoff points for identifying undiagnosed diabetes and prediabetes were calculated for FINDRISC by gender and race/ethnicity. Results Among the 20,633 adults (≥20 years), 49.8% were women and 53.0% were non-Hispanic White. The prevalence of undiagnosed diabetes and prediabetes was 4.1% and 35.6%, respectively. FINDRISC was positively associated with the prevalence of diabetes (OR = 1.48 for 1 unit increase, p<0.001) and prediabetes (OR = 1.15 for 1 unit increase, p<0.001). The area under ROC for detecting undiagnosed diabetes was 0.75 for total population, 0.74 for men and 0.78 for women (p = 0.04); 0.76 for White, 0.76 for Black and 0.72 for Hispanics (p = 0.03 for White vs. Hispanics). The area under ROC for detecting prediabetes was 0.67 for total population, 0.66 for men and 0.70 for women (p<0.001); 0.68 for White, 0.67 for Black and 0.65 for Hispanics (p<0.001 for White vs. Hispanics). The optimal cutoff point was 10 (sensitivity = 0.75) for men and 12 (sensitivity = 0.72) for women for detecting undiagnosed diabetes; 9 (sensitivity = 0.61) for men and 10 (sensitivity = 0.69) for women for detecting prediabetes. Conclusions FINDRISC is a simple and non-invasive screening tool to identify individuals at high risk for diabetes in the U.S. adults.",
+      "arxiv_id": null,
+      "doi": "10.1371/journal.pone.0097865",
+      "journal_title": null
+    }
+  }
+]
