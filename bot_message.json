@@ -1,0 +1,49 @@
+{
+    "caption_entities": [],
+    "channel_chat_created": false,
+    "chat": {
+        "first_name": "Andrew",
+        "id": 1034689842,
+        "last_name": "Laptev",
+        "type": "private",
+        "username": "andrewlaptev"
+    },
+    "date": 1640020309,
+    "delete_chat_photo": false,
+    "entities": [
+        {
+            "length": 6,
+            "offset": 0,
+            "type": "text_link",
+            "url": "https://t.me/tegetge/132"
+        },
+        {
+            "length": 6,
+            "offset": 0,
+            "type": "bold"
+        }
+    ],
+    "from": {
+        "first_name": "Avatar.NewsMod",
+        "id": 5003522949,
+        "is_bot": true,
+        "username": "avatar_newsmod_bot"
+    },
+    "group_chat_created": false,
+    "message_id": 553,
+    "new_chat_members": [],
+    "new_chat_photo": [],
+    "photo": [],
+    "reply_markup": {
+        "inline_keyboard": [
+            [
+                {
+                    "callback_data": "markup",
+                    "text": "Markup"
+                }
+            ]
+        ]
+    },
+    "supergroup_chat_created": false,
+    "text": "test_2\nfwdefwefwef"
+}
