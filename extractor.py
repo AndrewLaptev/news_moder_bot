@@ -4,7 +4,6 @@ import requests
 import json
 import logging
 from telethon import TelegramClient, events
-import telethon
 
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO
@@ -30,15 +29,9 @@ def telegram_bot_send_news(bot_token: str, bot_chatID: str, news_text):
     data1 = '{' + f'"chat_id":"{bot_chatID}", "parse_mode":"html", "text":"{text}", "reply_markup": ' + '{'
     data2 = '"inline_keyboard": [[{"text":"Markup", "callback_data": "markup"}]]} }'
     data = data1 + data2
-    response = requests.post(f'https://api.telegram.org/bot{bot_token}/sendMessage', headers=headers, data=data.replace("**", "***").encode('utf-8'))
+    response = requests.post(f'https://api.telegram.org/bot{bot_token}/sendMessage', headers=headers, data=data.encode('utf-8'))
     return json.dumps(response.json(), sort_keys=True, indent=4, ensure_ascii=False)
 
-# for link in channel_list:
-#"parse_mode":"Markdown"
-#     @client.on(events.NewMessage(chats = link))
-#     async def news_event_handler(event):
-#         channel_name = '[' + str(event.chat.title) + ']' + f"({link}/{event.id})\n\n"
-#         print(telegram_bot_send_news(BOT_TOKEN, BOT_CHAT_ID, channel_name + event.text))
 
 @client.on(events.NewMessage(chats = channel_list[0]))
 async def news_event_handler1(event):
