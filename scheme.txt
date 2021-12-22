@@ -1,1 +1,0 @@
-news_extractor.py -> Redis -> news_checker.py -> Avatar.NewsMod -> write_to_db.py -> MongoDB(Common news)
