@@ -55,7 +55,7 @@ def button_handler(update: Update, context: CallbackContext) -> None:
     query.answer()
     news_tmp = convert_json(news_pattern, json.loads(query.message.to_json()))
 
-    if query.data == "markup": # ломает ссылки в абстракте, надо поправить
+    if query.data == "markup": # ломает гиперссылки в абстракте, надо поправить
         # производит автоматическую разметку сообщения на Title и Abstract (поля в требуемом формате новостей news_pattern.json)
         source = '<strong><a href="' + news_tmp['payload']['pdf_url'] + '">' + news_tmp['payload']['authors'][0] + '</a></strong>\n'
         title = '<b>Title</b>:\n' + news_tmp['payload']['title']
