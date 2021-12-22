@@ -6,24 +6,38 @@ from dotenv import load_dotenv
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Updater, CallbackQueryHandler, CallbackContext
 
+LOG_FOLDER = "../log/bot_news"
+NEWS_PATTERN = "../data/message_patterns/news_pattern.json"
+
+# логируем все в файлик
+os.makedirs(LOG_FOLDER, exist_ok=True)
 logging.basicConfig(
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO
+    filename=LOG_FOLDER + f"/bot_news{datetime.utcnow().strftime('%Y%m%d-%H%M%S%f')}.log",
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', 
+    level=logging.INFO
 )
 logger = logging.getLogger(__name__)
 
 load_dotenv()
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 
-with open("news_pattern.json") as f:
+# в качестве шаблона сообщения берется пустой JSON
+with open(NEWS_PATTERN) as f:
     news_pattern = json.load(f)
 
 def title_filter(title: str):
+    '''
+    Фильтрует все ненужные символы в заголовке новости (требует расширения фильтров)
+    '''
     for v in title.split(" "):
         if '#' in v:
             title = title.replace(v + ' ', '')
     return title
 
 def convert_json(news_pattern: dict, src_news: dict):
+    '''
+    Выполняет конвертацию из формата сообщения телеграма в нужный нам формат новости
+    '''
     news = news_pattern
     text_split = src_news["text"].split('\n')
     news['payload']['title'] = title_filter(text_split[1])
@@ -34,11 +48,15 @@ def convert_json(news_pattern: dict, src_news: dict):
     return news
 
 def button_handler(update: Update, context: CallbackContext) -> None:
+    '''
+    Обработчик кнопок `Markup`, `Add` и `Delete`. Планируется добавить кнопку `Edit`, по возможности
+    '''
     query = update.callback_query
     query.answer()
     news_tmp = convert_json(news_pattern, json.loads(query.message.to_json()))
 
     if query.data == "markup": # ломает ссылки в абстракте, надо поправить
+        # производит автоматическую разметку сообщения на Title и Abstract (поля в требуемом формате новостей news_pattern.json)
         source = '<strong><a href="' + news_tmp['payload']['pdf_url'] + '">' + news_tmp['payload']['authors'][0] + '</a></strong>\n'
         title = '<b>Title</b>:\n' + news_tmp['payload']['title']
         abstract = '\n\n<b>Abstract</b>:\n' + news_tmp['payload']['abstract']
@@ -61,13 +79,11 @@ def button_handler(update: Update, context: CallbackContext) -> None:
     elif query.data == "deleted":
         query.delete_message()
 
-
-def main() -> None:
+def bot_news_start() -> None:
     updater = Updater(BOT_TOKEN)
     updater.dispatcher.add_handler(CallbackQueryHandler(button_handler))
     updater.start_polling()
     updater.idle()
 
-
 if __name__ == '__main__':
-    main()
+    bot_news_start()
