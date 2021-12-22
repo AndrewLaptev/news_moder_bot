@@ -1,1 +1,4 @@
 .venv
+log
+app/session_name.session
+app/extractor.py
