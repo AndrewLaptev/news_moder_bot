@@ -6,6 +6,11 @@ from dotenv import load_dotenv
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Updater, CallbackQueryHandler, CallbackContext
 
+# Теперь можно запускать из любой директории
+if "/" in __file__:
+    CWD = "/".join(__file__.split("/")[:-1])
+    os.chdir(CWD)
+
 LOG_FOLDER = "../log/bot_news"
 NEWS_PATTERN = "../data/message_patterns/news_pattern.json"
 

@@ -1,4 +1,10 @@
 # File for generation extractor.py from extractor_src.py
+import os
+
+# Теперь можно запускать из любой директории
+if "/" in __file__:
+    CWD = "/".join(__file__.split("/")[:-1])
+    os.chdir(CWD)
 
 CHANNEL_LIST = "../data/channel_list.txt"
 EXTRACTOR_SRC = "../app/extractor_src.py"

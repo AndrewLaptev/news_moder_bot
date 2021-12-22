@@ -6,6 +6,11 @@ import json
 import logging
 from telethon import TelegramClient, events
 
+# Теперь можно запускать из любой директории
+if "/" in __file__:
+    CWD = "/".join(__file__.split("/")[:-1])
+    os.chdir(CWD)
+
 LOG_FOLDER = "../log/extractor"
 CHANNEL_LIST = "../data/channel_list.txt"
 
