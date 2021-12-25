@@ -6,6 +6,7 @@ PROJECT_PATH = os.path.abspath(__file__).split("/app", 1)[0]
 CHANNEL_LIST = f"{PROJECT_PATH}/data/channel_list.txt"
 EXTRACTOR_SRC = f"{PROJECT_PATH}/app/extractor_src.py"
 EXTRACTOR_DST = f"{PROJECT_PATH}/app/extractor.py"
+CODEBLOCK_KEYWORD = "@client"
 
 channel_list = []
 repeat_codeblock_list = []
@@ -28,7 +29,7 @@ def extractor_generator() -> None:
     # разбиваем файл кода список блоков и потом на два слайса, между которыми и будут вставлены обработчики каналов
     code_list = code.split("\n\n")
     for i, block in enumerate(code_list):
-        if "@client" in block:
+        if CODEBLOCK_KEYWORD in block:
             repeat_codeblock = block
             code_list_1 = code_list[:i]
             code_list_2 = code_list[i + 1:]
