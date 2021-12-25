@@ -48,7 +48,7 @@ def telegram_bot_send_news(bot_token: str, bot_chatID: str, news_text):
 @client.on(events.NewMessage(chats = channel_list[0]))
 async def news_event_handler(event):
     channel_name = f'<strong><a href="{channel_list[0]}/{event.id}">' + str(event.chat.title) + '</a></strong>\n'
-    print(telegram_bot_send_news(BOT_TOKEN, BOT_CHAT_ID, channel_name + event.text))
+    telegram_bot_send_news(BOT_TOKEN, BOT_CHAT_ID, channel_name + event.text)
 
 def extractor_news_start() -> None:
     client.start()
