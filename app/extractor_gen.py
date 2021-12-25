@@ -1,14 +1,11 @@
 # File for generation extractor.py from extractor_src.py
 import os
 
-# Теперь можно запускать из любой директории
-if "/" in __file__:
-    CWD = "/".join(__file__.split("/")[:-1])
-    os.chdir(CWD)
-
-CHANNEL_LIST = "../data/channel_list.txt"
-EXTRACTOR_SRC = "../app/extractor_src.py"
-EXTRACTOR_DST = "../app/extractor.py"
+# Теперь можно запускать из любой директории проекта, т.к. файлы будут доступны через абсолютные пути
+PROJECT_PATH = os.path.abspath(__file__).split("/app", 1)[0]
+CHANNEL_LIST = f"{PROJECT_PATH}/data/channel_list.txt"
+EXTRACTOR_SRC = f"{PROJECT_PATH}/app/extractor_src.py"
+EXTRACTOR_DST = f"{PROJECT_PATH}/app/extractor.py"
 
 channel_list = []
 repeat_codeblock_list = []

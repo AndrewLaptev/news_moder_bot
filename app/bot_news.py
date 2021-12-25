@@ -6,13 +6,10 @@ from dotenv import load_dotenv
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Updater, CallbackQueryHandler, CallbackContext
 
-# Теперь можно запускать из любой директории
-if "/" in __file__:
-    CWD = "/".join(__file__.split("/")[:-1])
-    os.chdir(CWD)
-
-LOG_FOLDER = "../log/bot_news"
-NEWS_PATTERN = "../data/message_patterns/news_pattern.json"
+# Теперь можно запускать из любой директории проекта, т.к. файлы будут доступны через абсолютные пути
+PROJECT_PATH = os.path.abspath(__file__).split("/app", 1)[0]
+LOG_FOLDER = f"{PROJECT_PATH}/log/bot_news"
+NEWS_PATTERN = f"{PROJECT_PATH}/data/message_patterns/news_pattern.json"
 
 # логируем все в файлик
 os.makedirs(LOG_FOLDER, exist_ok=True)

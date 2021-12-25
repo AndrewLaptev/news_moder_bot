@@ -6,13 +6,10 @@ import json
 import logging
 from telethon import TelegramClient, events
 
-# Теперь можно запускать из любой директории
-if "/" in __file__:
-    CWD = "/".join(__file__.split("/")[:-1])
-    os.chdir(CWD)
-
-LOG_FOLDER = "../log/extractor"
-CHANNEL_LIST = "../data/channel_list.txt"
+# Теперь можно запускать из любой директории проекта, т.к. файлы будут доступны через абсолютные пути
+PROJECT_PATH = os.path.abspath(__file__).split("/app", 1)[0]
+LOG_FOLDER = f"{PROJECT_PATH}/log/extractor"
+CHANNEL_LIST = f"{PROJECT_PATH}/data/channel_list.txt"
 
 # логируем все в файлик
 os.makedirs(LOG_FOLDER, exist_ok=True)
