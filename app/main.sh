@@ -4,4 +4,5 @@
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 cd $SCRIPT_DIR
 
-python3 -u "extractor_gen.py" && python3 -u "extractor.py" & python3 -u "bot_news.py"
+python3 -u "extractor_gen.py" && python3 "extractor.py"
+python3 -u "bot_news.py"
